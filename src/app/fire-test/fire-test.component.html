@@ -1,0 +1,49 @@
+<div *ngIf="afAuth.authState | async; let user; else showLogin">
+  <h1>Hello {{ user.displayName }}!</h1>
+  <button (click)="logout()">Logout</button>
+</div>
+<ng-template #showLogin>
+  <p>Please login.</p>
+  <button (click)="login()">Login with Google</button>
+</ng-template>
+
+<div >
+  <div class="mdl-textfield mdl-js-textfield">
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input required class="mdl-textfield__input" type="text"  name="search" [(ngModel)]="testVal">
+      <label class="mdl-textfield__label" for="sample3">Ajouter un item</label>
+      
+    </div>
+  </div>
+  <button (click)="addItem()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+    envoyer
+  </button>
+</div>
+
+<ul>
+  <li class="text" *ngFor="let item of afListObs | async">
+    {{item | json}}
+  </li>
+</ul>
+
+<p *ngIf="errorMessage.length > 0" class="text-danger">
+	{{errorMessage}}</p>
+ 
+<p *ngIf="error.message.length > 0" class="text-danger">
+	{{error.message}}</p>
+ 
+<form (ngSubmit)="onLoginEmail()">
+	<div class="form-group">
+		<label for="email">Email</label> <input type="email"
+			class="form-control" id="email" name="email" required
+			[(ngModel)]="email">
+	</div>
+ 
+	<div class="form-group">
+		<label for="password">Password</label> <input type="password"
+			class="form-control" id="password" name="password" required
+			[(ngModel)]="password">
+	</div>
+ 
+	<button type="submit" class="btn btn-success">Register/Login</button>
+</form>

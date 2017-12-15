@@ -1,0 +1,79 @@
+
+ <!-- <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">{{ title }}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      Ma voiture est une {{ voiture.nom | uppercase }} de couleur {{ voiture.couleur }}
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        Get Started
+      </a>
+      <input type="text" [(ngModel)]='title' placeholder="test">      
+    </div>
+
+  </div>
+
+
+
+  <ul class="demo-list-three mdl-list" *ngFor="let v of garage">
+    <li class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <i class="material-icons mdl-list__item-avatar"></i>
+        <span>{{ v.nom | uppercase }}</span>
+        <span class="mdl-list__item-text-body">
+          Ma voiture est une {{ v.nom | uppercase }} de couleur {{ v.couleur }}
+          <input type="text" [(ngModel)]='v.nom' placeholder="test">      
+          
+        </span>
+      </span>
+      <span class="mdl-list__item-secondary-content">
+        <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">star</i></a>
+      </span>
+    </li>
+ 
+  </ul>
+-->
+<form #f="ngForm" (ngSubmit)="addComment(f.value)">
+
+  <div >
+    <div class="mdl-textfield mdl-js-textfield">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input required class="mdl-textfield__input" type="text" ngModel name="message" [(ngModel)]="comment.message">
+        <label class="mdl-textfield__label" for="sample3">Commentaire</label>
+        
+      </div>
+    </div>
+    <button [disabled]="!f.valid" type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+      <i class="material-icons">add</i>
+    </button>
+  </div>
+
+</form>
+  <!--<div >
+    <div class="mdl-textfield mdl-js-textfield">
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text" id="sample3" [(ngModel)]="comment.message">
+        <label class="mdl-textfield__label" for="sample3">Commentaire</label>
+        
+      </div>
+    </div>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" (click)="addComment()" [disabled]="!comment.message">
+      <i class="material-icons">add</i>
+    </button>
+  </div>-->
+
+
+  <ul class="demo-list-three mdl-list" *ngFor="let c of comments">
+    <li class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <span class="mdl-list__item-text-body">{{ c.message }}
+          <span class="mdl-chip">
+            <span class="mdl-chip__text">{{ c.date | date:'shortTime'}}</span>
+        </span>   
+        </span>
+      </span>
+    </li>
+ 
+  </ul>

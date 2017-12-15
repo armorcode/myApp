@@ -1,0 +1,58 @@
+
+<form #f="ngForm" (ngSubmit)="searchImages(f.value)">
+  
+    <div >
+      <div class="mdl-textfield mdl-js-textfield">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input required class="mdl-textfield__input" type="text" ngModel name="search" [(ngModel)]="search">
+          <label class="mdl-textfield__label" for="sample3">Que recherchez vous ?</label>
+          
+        </div>
+      </div>
+      <button [disabled]="!f.valid" type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+        Button
+      </button>
+    </div>
+  
+  </form>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" (click)="onTest()">
+    Button
+  </button>
+<!--<div ng-if="gallery">  ********************* gallery?.hits -->
+<div class="container">
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp" *ngFor="let i of gallery?.hits">
+
+    <img src="{{ i.previewURL }}" class="mdl-card__title"> 
+    <div class="mdl-card__supporting-text">
+        <h2 class="mdl-card__title-text">{{ i.id }}</h2>
+      Type : {{ i.type }}
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        {{ i.user | uppercase }}
+      </a>
+    </div>
+    <div class="mdl-card__menu">
+      <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+        <i class="material-icons">share</i>
+      </button>
+    </div>
+  </div>
+
+  <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center">
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1">Previous</a>
+        </li>
+        <li class="page-item" [ngClass]="{'active':currentPage==(i+1)}" *ngFor="let page of pages; let i=index"><a class="page-link" (click)="goToPage(i)">{{ i }}</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#">Next</a>
+        </li>
+      </ul>
+    </nav>
+</div>
+  
+<app-interaction [opn]="opn"></app-interaction>
+
+
+
